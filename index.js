@@ -18,19 +18,23 @@ app.post("/", (req, res) => {
   console.log("Webhook triggered:", JSON.stringify(msgBody));
 
   let message;
-  // message = `Webhook triggered:\n\n${JSON.stringify(msgBody)}`;
+  message = `Webhook triggered:\n\n${JSON.stringify(msgBody)}\To: ${JSON.stringify(msgBody)[0].to}\nFrom: ${
+    JSON.stringify(msgBody)[0].from
+  }\nAmount: ${JSON.stringify(msgBody)[0].value}\n\nDetails: https://goerli.etherscan.io/tx/${
+    JSON.stringify(msgBody)[0].hash
+  } `;
 
-  if (JSON.stringify(msgBody)[0].from == "0x498098ca1b7447fc5035f95b80be97ee16f82597") {
-    message = `ETH sent from my wallet!\nTo:${JSON.stringify(msgBody)[0].to}\nAmount: ${
-      JSON.stringify(msgBody)[0].value
-    } ETH\n\nDetails: https://goerli.etherscan.io/tx/${JSON.stringify(msgBody)[0].hash}`;
-  }
+  // if (JSON.stringify(msgBody)[0].from == "0x498098ca1b7447fc5035f95b80be97ee16f82597") {
+  //   message = `ETH sent from my wallet!\nTo:${JSON.stringify(msgBody)[0].to}\nAmount: ${
+  //     JSON.stringify(msgBody)[0].value
+  //   } ETH\n\nDetails: https://goerli.etherscan.io/tx/${JSON.stringify(msgBody)[0].hash}`;
+  // }
 
-  if (JSON.stringify(msgBody)[0].to == "0x498098ca1b7447fc5035f95b80be97ee16f82597") {
-    message = `ETH sent to my wallet!\nFrom:${JSON.stringify(msgBody)[0].from}\nAmount: ${
-      JSON.stringify(msgBody)[0].value
-    } ETH\n\nDetails: https://goerli.etherscan.io/tx/${JSON.stringify(msgBody)[0].hash}`;
-  }
+  // if (JSON.stringify(msgBody)[0].to == "0x498098ca1b7447fc5035f95b80be97ee16f82597") {
+  //   message = `ETH sent to my wallet!\nFrom:${JSON.stringify(msgBody)[0].from}\nAmount: ${
+  //     JSON.stringify(msgBody)[0].value
+  //   } ETH\n\nDetails: https://goerli.etherscan.io/tx/${JSON.stringify(msgBody)[0].hash}`;
+  // }
 
   bot
     .sendMessage(chatId, message)
