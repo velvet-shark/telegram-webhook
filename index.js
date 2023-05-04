@@ -20,11 +20,10 @@ app.post("/", (req, res) => {
   console.log("Webhook triggered:", JSON.stringify(msgBody));
 
   let message;
-  message = `${JSON.stringify(msgBody)}\n${msgBody}\nTo: ${JSON.stringify(msgBody).to}\nFrom: ${
-    JSON.stringify(msgBody).from
-  }\nAmount: ${JSON.stringify(msgBody).value}\n\nDetails: https://goerli.etherscan.io/tx/${
-    JSON.stringify(msgBody).hash
-  } `;
+
+  message = `${JSON.stringify(msgBody)}\n${msgBody}\nTo: ${msgBody.to}\nFrom: ${msgBody.from}\nAmount: ${
+    msgBody.value
+  }\n\nDetails: https://goerli.etherscan.io/tx/${msgBody.hash}`;
 
   bot
     .sendMessage(chatId, message)
