@@ -13,17 +13,15 @@ app.use(bodyParser.json()); // Parse JSON request bodies
 
 // Webhook endpoint
 app.post("/", (req, res) => {
-  msgBody = req.body;
+  msgBody = JSON.stringify(req.body);
 
-  res.send(JSON.stringify(msgBody));
+  // res.send(JSON.stringify(msgBody));
 
   console.log("Webhook triggered:", JSON.stringify(msgBody));
 
   let message;
 
-  message = `${JSON.stringify(msgBody)}\n${msgBody}\nTo: ${msgBody.to}\nFrom: ${msgBody.from}\nAmount: ${
-    msgBody.value
-  }\n\nDetails: https://goerli.etherscan.io/tx/${msgBody.hash}`;
+  message = `${msgBody}\n${msgBody}\nTo: ${msgBody.to}\nFrom: ${msgBody.from}\nAmount: ${msgBody.value}\n\nDetails: https://goerli.etherscan.io/tx/${msgBody.hash}`;
 
   bot
     .sendMessage(chatId, message)
