@@ -15,6 +15,8 @@ app.use(bodyParser.json()); // Parse JSON request bodies
 app.post("/", (req, res) => {
   msgBody = req.body;
 
+  res.send(JSON.stringify(msgBody));
+
   console.log("Webhook triggered:", JSON.stringify(msgBody));
 
   let message;
@@ -22,7 +24,7 @@ app.post("/", (req, res) => {
   //   msgBody.value
   // }\n\nDetails: https://goerli.etherscan.io/tx/${msgBody.hash} `;
 
-  if (JSON.stringify(msgBody).from == "0x498098ca1b7447fc5035f95b80be97ee16f82597") {
+  if (msgBody.from == "0x498098ca1b7447fc5035f95b80be97ee16f82597") {
     message = `ETH sent from my wallet!\nTo: https://goerli.etherscan.io/address/${msgBody.to}\nAmount: ${(
       Number.parseInt(msgBody.value) / 1e18
     ).toLocaleString(undefined, { minimumFractionDigits: 8 })} ETH\n\nDetails: https://goerli.etherscan.io/tx/${
@@ -30,7 +32,7 @@ app.post("/", (req, res) => {
     }`;
   }
 
-  if (JSON.stringify(msgBody).to == "0x498098ca1b7447fc5035f95b80be97ee16f82597") {
+  if (msgBody.to == "0x498098ca1b7447fc5035f95b80be97ee16f82597") {
     message = `ETH sent to my wallet!\nFrom: https://goerli.etherscan.io/address/${msgBody.from}\nAmount: ${(
       Number.parseInt(msgBody.value) / 1e18
     ).toLocaleString(undefined, { minimumFractionDigits: 8 })} ETH\n\nDetails: https://goerli.etherscan.io/tx/${
