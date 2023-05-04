@@ -17,7 +17,7 @@ app.post("/", (req, res) => {
 
   console.log("Webhook triggered:", JSON.stringify(msgBody));
 
-  let message = msgBody;
+  let message;
   // message = `Webhook triggered:\n\n${JSON.stringify(msgBody)}\To: ${msgBody.to}\nFrom: ${msgBody.from}\nAmount: ${
   //   msgBody.value
   // }\n\nDetails: https://goerli.etherscan.io/tx/${msgBody.hash} `;
@@ -49,7 +49,7 @@ app.post("/", (req, res) => {
       res.sendStatus(500); // Internal Server Error
     });
 
-  res.send(JSON.stringify(msgBody));
+  // res.send(JSON.stringify(msgBody));
 });
 
 // Start the server
