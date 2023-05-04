@@ -13,9 +13,11 @@ app.use(bodyParser.json()); // Parse JSON request bodies
 
 // Webhook endpoint
 app.post("/", (req, res) => {
-  console.log("Webhook triggered:", req.body);
+  msgBody = req.body;
 
-  const message = `Webhook triggered:\n\n${JSON.stringify(req.body)}`;
+  console.log("Webhook triggered:", msgBody);
+
+  const message = `Webhook triggered:\n\n${msgBody}`;
 
   bot
     .sendMessage(chatId, message)
@@ -27,6 +29,8 @@ app.post("/", (req, res) => {
       console.error("Error sending Telegram notification:", error);
       res.sendStatus(500); // Internal Server Error
     });
+
+  res.send(JSON.stringify(msgBody));
 });
 
 // Start the server
