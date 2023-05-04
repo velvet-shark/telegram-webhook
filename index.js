@@ -17,7 +17,7 @@ app.post("/", (req, res) => {
 
   console.log("Webhook triggered:", JSON.stringify(msgBody));
 
-  let message;
+  let message = msgBody;
   // message = `Webhook triggered:\n\n${JSON.stringify(msgBody)}\To: ${msgBody.to}\nFrom: ${msgBody.from}\nAmount: ${
   //   msgBody.value
   // }\n\nDetails: https://goerli.etherscan.io/tx/${msgBody.hash} `;
