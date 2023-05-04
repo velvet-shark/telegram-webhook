@@ -23,11 +23,15 @@ app.post("/", (req, res) => {
   // }\n\nDetails: https://goerli.etherscan.io/tx/${msgBody.hash} `;
 
   if (msgBody.from == "0x498098ca1b7447fc5035f95b80be97ee16f82597") {
-    message = `ETH sent from my wallet!\nTo:${msgBody.to}\nAmount: ${msgBody.value} ETH\n\nDetails: https://goerli.etherscan.io/tx/${msgBody.hash}`;
+    message = `ETH sent from my wallet!\nTo: https://goerli.etherscan.io/address/${
+      msgBody.to
+    }\nAmount: ${Number.parseInt(msgBody.value, 8)} ETH\n\nDetails: https://goerli.etherscan.io/tx/${msgBody.hash}`;
   }
 
   if (JSON.stringify(msgBody)[0].to == "0x498098ca1b7447fc5035f95b80be97ee16f82597") {
-    message = `ETH sent to my wallet!\nFrom:${msgBody.from}\nAmount: ${JmsgBod.value} ETH\n\nDetails: https://goerli.etherscan.io/tx/${msgBody.hash}`;
+    message = `ETH sent to my wallet!\nFrom: https://goerli.etherscan.io/address/${
+      msgBody.from
+    }\nAmount: ${Number.parseInt(msgBody.value, 8)} ETH\n\nDetails: https://goerli.etherscan.io/tx/${msgBody.hash}`;
   }
 
   bot
