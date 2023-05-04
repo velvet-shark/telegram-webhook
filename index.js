@@ -18,7 +18,7 @@ app.post("/", (req, res) => {
   console.log("Webhook triggered:", JSON.stringify(msgBody));
 
   let message;
-  message = `Webhook triggered:\n\n${msgBody}`;
+  message = `Webhook triggered:\n\n${JSON.stringify(msgBody)}`;
 
   // if (msgBody[0].from == "0x498098ca1b7447fc5035f95b80be97ee16f82597") {
   //   message = `ETH sent from my wallet!\nTo:${msgBody[0].to}\nAmount: ${msgBody[0].value} ETH\n\nDetails: https://goerli.etherscan.io/tx/${msgBody[0].hash}`;
