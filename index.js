@@ -17,7 +17,7 @@ app.post("/", (req, res) => {
 
   console.log("Webhook triggered:", msgBody);
 
-  const message = `Webhook triggered:\n\n${msgBody}`;
+  const message = `Webhook triggered:\n\n${JSON.stringify(msgBody)}`;
 
   bot
     .sendMessage(chatId, message)
