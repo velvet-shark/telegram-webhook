@@ -14,10 +14,10 @@ app.use(bodyParser.json()); // Parse JSON request bodies
 // Webhook endpoint
 app.post("/", (req, res) => {
   msgBody = JSON.stringify(req.body);
-  sent_to = req.body.to;
-  sent_from = req.body.from;
-  sent_value = req.body.value;
-  sent_hash = req.body.hash;
+  sent_to = msgBody.to;
+  sent_from = msgBody.from;
+  sent_value = msgBody.value;
+  sent_hash = msgBody.hash;
 
   // res.send(JSON.stringify(msgBody));
 
