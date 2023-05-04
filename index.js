@@ -13,7 +13,7 @@ app.use(bodyParser.json()); // Parse JSON request bodies
 
 // Webhook endpoint
 app.post("/", (req, res) => {
-  msgBody = JSON.stringify(req.body);
+  msgBody = req.body;
 
   console.log("Webhook triggered:", JSON.stringify(msgBody));
 
