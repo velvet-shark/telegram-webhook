@@ -15,7 +15,7 @@ app.use(bodyParser.json()); // Parse JSON request bodies
 app.post("/", (req, res) => {
   console.log("Webhook triggered:", req.body);
 
-  const message = `Webhook triggered:\n\n${JSON.stringify(req.body, null, 2)}`;
+  const message = `Webhook triggered:\n\n${JSON.stringify(req.body)}`;
 
   bot
     .sendMessage(chatId, message)
