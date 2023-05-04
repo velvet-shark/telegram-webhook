@@ -19,11 +19,13 @@ app.post("/", (req, res) => {
 
   // const message = `Webhook triggered:\n\n${msgBody}`;
 
-  if msgBody[0].from == "0x498098ca1b7447fc5035f95b80be97ee16f82597" {
+  let message;
+
+  if (msgBody[0].from === "0x498098ca1b7447fc5035f95b80be97ee16f82597") {
     message = `ETH sent from my wallet!\nTo:${msgBody[0].to}\nAmount: ${msgBody[0].value} ETH\n\nDetails: https://goerli.etherscan.io/tx/${msgBody[0].hash}`;
   }
 
-  if msgBody[0].to == "0x498098ca1b7447fc5035f95b80be97ee16f82597" {
+  if (msgBody[0].to === "0x498098ca1b7447fc5035f95b80be97ee16f82597") {
     message = `ETH sent to my wallet!\nFrom:${msgBody[0].from}\nAmount: ${msgBody[0].value} ETH\n\nDetails: https://goerli.etherscan.io/tx/${msgBody[0].hash}`;
   }
 
